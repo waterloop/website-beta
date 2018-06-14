@@ -1,0 +1,20 @@
+# dependencies
+node_modules
+
+# logs
+yarn-error.log
+npm-debug.log
+
+# Nuxt build
+.nuxt
+
+# Nuxt generate
+dist
+build
+
+# Secret environment variables
+.env
+
+# ide stuff
+.vscode
+.directory
