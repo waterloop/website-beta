@@ -1,4 +1,8 @@
 $bg: #2a2a2a;
+$dark-bg: darken($bg, 10%);
+$light-bg: lighten($bg, 10%);
+$half-bg: lighten($bg, 50);
+
 $brand-yellow: #fed138;
 
 $nav-height: 64px;
