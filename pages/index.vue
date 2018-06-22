@@ -172,16 +172,21 @@
     </section>
     <div
       v-once
-      class="light-bg mt4 pv4">
-      <h2 class="container f2 ma0 mb4 white">Our most valued sponsors</h2>
-      <div class="flex flex-wrap mh4 justify-center">
-        <img
-          v-for="(sponsor, i) in sponsors"
-          :src="require('@/assets/img/sponsors/' + sponsor)"
+      class="bg-l30 mt4 pv4">
+      <h2 class="container f2 ma0 mb4 white">Our most valued partners</h2>
+      <div class="flex flex-wrap mh4 justify-center img-shadow">
+        <a
+          v-for="(partner, i) of partners"
           :key="i"
-          alt="Sponsor"
-          height="75"
-          class="ma2">
+          :href="partner.link"
+          class="ma2"
+          target="_blank">
+          <img
+            :src="require('@/assets/img/partners/' + partner.img)"
+            :alt="partner.name"
+            height="75"
+            class="of-contain">
+        </a>
       </div>
     </div>
   </div>
@@ -189,7 +194,7 @@
 
 <script>
 import axios from '~/plugins/axios'
-import { hypersonic } from '~/assets/data/sponsorStructure'
+import { hypersonic } from '~/assets/data/partnerStructure'
 import waterloopLogo from '~/assets/img/index/icon.svg'
 
 const eventOpts = {
@@ -200,7 +205,7 @@ export default {
   data() {
     return {
       waterloopLogo,
-      sponsors: hypersonic,
+      partners: hypersonic,
       blog: [],
       timeText: [ '', 'in', '2 hours', '30', 'minutes' ],
     }

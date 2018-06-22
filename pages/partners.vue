@@ -7,8 +7,8 @@
         percentage="0.63"><img
           class="responsive-img"
           src=""
-          alt="Sponsors"></Parallax>
-      <div class="container h-100 f1 white flex items-center">We love our sponsors!</div>
+          alt="Partners"></Parallax>
+      <div class="container h-100 f1 white flex items-center">Our Partners</div>
     </div>
     <section class="white">
       <div class="container f4">
@@ -35,18 +35,23 @@
       </div>
       <div>
         <div
-          v-for="(sponsor, i) in sponsors"
+          v-for="(group, i) in partners"
           :key="i">
-          <h2 class="f1 b tc line-through nav-sticky pb4 z-3 mt4 mb0">{{ sponsor.name }}</h2>
+          <h2 class="f1 b tc line-through nav-sticky pb4 z-3 mt4 mb0">{{ group.name }}</h2>
           <div
-            :class="sponsor.name.toLowerCase()"
-            class="flex-align flex-wrap sponsor-card mh4">
-            <img
-              v-for="(item, j) of sponsor.members"
+            :class="group.name.toLowerCase()"
+            class="flex-align flex-wrap partner-card img-shadow mh4">
+            <a
+              v-for="(partner, j) of group.members"
               :key="j"
-              :src="require('@/assets/img/sponsors/' + item)"
-              :alt="sponsor.name + ' sponsor'"
-              class="sponsor-logo1">
+              :href="partner.link"
+              class="ma4"
+              target="_blank">
+              <img
+                :src="require('@/assets/img/partners/' + partner.img)"
+                :alt="partner.name"
+                class="of-contain">
+            </a>
           </div>
         </div>
       </div>
@@ -55,12 +60,13 @@
 </template>
 
 <script>
-import sponsors from '~/assets/data/sponsorStructure'
+import partners from '~/assets/data/partnerStructure'
 
 export default {
   data() {
-    return { sponsors }
+    return { partners }
   },
+  head: { title: 'Waterloop - Partners' },
 }
 </script>
 
@@ -84,12 +90,7 @@ export default {
 }
 
 @media only screen and (max-width: 921px) {
-  .sponsor-logo1 {
-    height: auto;
-    max-width: 95%;
-  }
-
-  .sponsors-header {
+  .partners-header {
     font-size: 57px;
   }
 
@@ -105,13 +106,9 @@ export default {
   }
 }
 
-.sponsor-card {
+.partner-card {
   background: lighten($bg, 50);
   border-radius: 8px;
   padding: 2rem;
-
-  > img {
-    margin: 2rem;
-  }
 }
 </style>

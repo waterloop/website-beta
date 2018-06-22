@@ -73,8 +73,8 @@ export default {
         href: '/media',
       },
       {
-        name: 'Sponsors',
-        href: '/sponsors',
+        name: 'Partners',
+        href: '/partners',
       },
       {
         name: 'Downloads',
