@@ -1,0 +1,16 @@
+{
+  "name": "watapi-send-slack",
+  "private": true,
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "deploy": "npm run zip && npm run upload",
+    "upload": "aws lambda update-function-code --function-name sendSlack --zip-file fileb://./lambda.zip",
+    "zip": "zip -r lambda.zip index.js node_modules"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "slack-node": "^0.1.8"
+  }
+}

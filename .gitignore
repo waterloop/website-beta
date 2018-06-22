@@ -18,3 +18,6 @@ build
 # ide stuff
 .vscode
 .directory
+
+# AWS lambda build
+lambda.zip

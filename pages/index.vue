@@ -201,6 +201,9 @@ const eventOpts = {
   capture: false,
   passive: false,
 }
+
+const endpoint = (process.env.NODE_ENV === 'production' ? 'https://3k6mmv3x0a.execute-api.us-east-2.amazonaws.com' : '') + '/api/mediumPosts'
+
 export default {
   data() {
     return {
@@ -241,9 +244,10 @@ export default {
       animateHook()
     }
 
-    axios.get('/api/mediumPosts').then(({ data }) => {
+    axios.get(endpoint).then(({ data }) => {
       this.blog = data.blog
     })
+      .catch(() => {}) // eslint-disable-line no-empty-function
   },
 }
 </script>
