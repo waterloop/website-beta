@@ -1,0 +1,15 @@
+{
+  "name": "watapi-medium-posts",
+  "private": true,
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "deploy": "npm run zip && npm run upload",
+    "upload": "aws lambda update-function-code --function-name mediumPosts --zip-file fileb://./lambda.zip",
+    "zip": "zip -r lambda.zip index.js node_modules"
+  },
+  "dependencies": {
+    "medium-get-latest-posts": "^1.1.2"
+  }
+}

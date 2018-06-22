@@ -3,23 +3,19 @@
     <h1 class="f1">Contact Info</h1>
     <div class="flex flex-row-ns flex-column">
       <div class="fl2 mr4-ns">
-        <form
-
-          target="hidden-frame"
-          action="/api/submitSlackForm"
-          method="POST"
-          @submit.prevent="ggwp">
+        <form @submit.prevent="submit">
           <h2 class="f2">Send us a message</h2>
           <div class="f4">
             <div class="mb3">
               <div >
-                <label for="name">Name *</label>
+                <label for="nameinput">Name *</label>
               </div>
               <div>
                 <input
-                  id="name"
+                  id="nameinput"
                   class="w-100 mw6-ns"
                   type="text"
+                  required
                   value="">
               </div>
             </div>
@@ -31,6 +27,7 @@
                 <input
                   id="email"
                   class="w-100 mw6-ns"
+                  required
                   type="email"
                   value="">
               </div>
@@ -50,10 +47,12 @@
             </div>
           </div>
           <button
+            :class="{ done }"
+            :disabled="done"
             class="submit-btn f4"
             type="submit"
-            name="action">Submit
-          </button>
+            name="action">{{ text }}</button>
+          <div v-if="error">An error occurred, please try again</div>
         </form>
       </div>
       <div>
@@ -72,6 +71,55 @@
     </div>
   </div>
 </template>
+
+<script>
+import axios from '~/plugins/axios'
+
+const endpoint = (process.env.NODE_ENV === 'production' ? 'https://3k6mmv3x0a.execute-api.us-east-2.amazonaws.com' : '') + '/api/sendSlack'
+
+export default {
+  data() {
+    return {
+      error: false,
+      state: -1, // -1 not submitted, 0 submitting, 1 submitted
+    }
+  },
+  computed: {
+    text() {
+      const { state } = this
+      return state < 0 ? 'Submit' : state > 0 ? 'Thank you!' : 'Submitting'
+    },
+  },
+  methods: {
+    submit() {
+      this.error = false
+      switch (this.state) {
+      case -1:
+        this.state = 0
+        axios.post(endpoint, {
+          name: window.nameinput.value,
+          email: window.email.value,
+          message: window.message.value,
+        }).then(() => {
+          this.state = 1
+        })
+          .catch(() => {
+            this.state = -1
+            this.error = true
+          })
+        break
+      case 0:
+        break
+      default:
+        window.nameinput.value = ''
+        window.email.value = ''
+        window.message.value = ''
+        this.state = -1
+      }
+    },
+  },
+}
+</script>
 
 <style lang="scss">
 @import '~/assets/css/variables.scss';
@@ -102,6 +150,7 @@ input[type='email'] {
   background-color: #000;
   border: 1px solid #000;
   color: $brand-yellow;
+  transition: all 200ms ease;
 
   &:hover {
     opacity: 0.8;
@@ -110,6 +159,12 @@ input[type='email'] {
   &:focus {
     border-color: $brand-yellow !important;
     outline: 0;
+  }
+
+  &.done {
+    background-color: $brand-yellow;
+    color: #000;
+    pointer-events: none;
   }
 }
 </style>
