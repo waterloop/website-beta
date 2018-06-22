@@ -28,8 +28,7 @@ a {
   transition: opacity 0.15s ease-in;
 
   &:visited,
-  &:hover,
-  &:focus {
+  &:hover {
     color: #fff;
     opacity: 0.5;
   }
@@ -40,7 +39,16 @@ a {
 }
 
 .light-bg {
-  background: lighten($bg, 10%);
+  background-color: $light-bg;
+}
+
+.dark-bg {
+  background-color: $dark-bg;
+}
+
+.dark-img {
+  filter: blur(0) brightness(0.5);
+  transition: filter 300ms linear;
 }
 
 .container {
@@ -72,6 +80,11 @@ a {
 
 .fg-yellow {
   color: $brand-yellow;
+  fill: $brand-yellow;
+}
+
+.white {
+  fill: #fff;
 }
 
 .noseldrag,
@@ -158,6 +171,10 @@ a {
   }
 }
 
+.fl1 {
+  flex: 1 1 0;
+}
+
 .fl2 {
   flex: 2 2 0;
 }
@@ -191,6 +208,10 @@ a {
   }
 }
 
+.nav-gap {
+  margin-top: -#{$nav-height};
+}
+
 .nav-sticky,
 .group-sticky {
   background-color: $bg;
@@ -219,4 +240,16 @@ a {
 
 .of-contain {
   object-fit: contain;
+}
+
+.img-shadow img {
+  filter: drop-shadow(0 0 0 #000);
+}
+
+.ds-2 img {
+  filter: drop-shadow(0 0 2px #000);
+}
+
+.cover-shadow {
+  text-shadow: 0 0 1rem #000;
 }

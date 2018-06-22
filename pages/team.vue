@@ -1,9 +1,24 @@
 <template>
   <div class="mb4">
+    <Cover
+      img-class="op-cb h-100"
+      class="items-end"
+      src="https://drive.google.com/uc?export=view&id=13-VSxkdTOXDLX3pKjDh_Ymgdbh4_YVIG"
+      alt="Waterloop Team">
+      <div class="container f1 fw8 flex flex-column items-center mb5">
+        <div>Meet the Team</div>
+        <div>
+          <MainArrow/>
+        </div>
+      </div>
+    </Cover>
     <section
       v-for="(group, i) of teamStructure.groups"
       :key="i"
       class="white relative">
+      <div
+        id="main"
+        class="target"/>
       <h1 class="container f1 b tc line-through nav-sticky z-3 mt4 mb0">{{ group.name }}</h1>
       <section
         v-for="(team, i) of group.teams"
@@ -27,14 +42,14 @@
     </section>
     <div
       ref="mask"
-      class="gg-mask z-999"/>
+      class="gg-mask dark-bg z-999"/>
     <transition name="fade">
       <div
         v-show="activeMember"
         ref="gg"
         class="gg-desc z-999 flex"
-        @click="wpgg">
-        <div class="w-50 h-100 pa5 bg-black">
+        @click="wpgg(false)">
+        <div class="w-50 h-100 pa5 dark-bg">
           <div class="f1 b fg-yellow">
             {{ activeMember && activeMember.bioTitle }}
           </div>
@@ -58,8 +73,8 @@ const eventHandlerOpts = {
   capture: false,
   passive: true,
 }
-const In = 'transform 300ms ease-in'
-const Out = 'transform 200ms ease-out'
+const In = 'transform 500ms ease-in, opacity 500ms cubic-bezier(0.25, 0.46, 0.45, 0.94)'
+const Out = 'transform 300ms ease-out, opacity 300ms cubic-bezier(0.55, 0.09, 0.68, 0.53)'
 
 export default {
   data() {
@@ -89,28 +104,27 @@ export default {
       }
       this.transtioning = true
       this.activeEl = e.currentTarget
-      const rect = this.activeEl.getBoundingClientRect()
       const { mask } = this.$refs
       const { innerWidth, innerHeight } = window
 
       window.location.hash = 'info'
       noscroll()
 
-      const radius = rect.height * 0.5
-      const offset = radius - 32
-      const x = rect.left + offset
-      const y = rect.top + offset
-      const factor = radius * 0.03125
+      const x = e.clientX - 32
+      const y = e.clientY - 32
 
       requestAnimationFrame(() => {
         mask.style.visibility = 'visible'
-        mask.style.transform = `translate3d(${ x }px,${ y }px,0) scale3d(${ factor },${ factor },1)`
+        mask.style.opacity = 0.2
+        mask.style.transform = `translate3d(${ x }px,${ y }px,0) scale3d(1,1,1)`
         requestAnimationFrame(() => {
           mask.style.transition = In
           requestAnimationFrame(() => {
             const x = innerWidth * 0.5 - 32
             const y = innerHeight * 0.5 - 32
-            mask.style.transform = `translate3d(${ x }px,${ y }px,0) scale3d(${ innerWidth * 0.017 },${ innerHeight * 0.017 },1)`
+            const factor = Math.sqrt(innerWidth ** 2 + innerHeight ** 2) * 0.03125 - 1
+            mask.style.opacity = 1
+            mask.style.transform = `translate3d(${ x }px,${ y }px,0) scale3d(${ factor },${ factor },1)`
             this.remove(mask)
             this.handler = () => {
               mask.style.transition = ''
@@ -145,6 +159,7 @@ export default {
         mask.style.transition = Out
         requestAnimationFrame(() => {
           mask.style.transform = `translate3d(${ x }px,${ y }px,0) scale3d(${ factor },${ factor },1)`
+          mask.style.opacity = 0.2
           this.remove(mask)
           this.handler = () => {
             mask.style.transition = ''
@@ -208,8 +223,7 @@ $border-radius: 5%;
 }
 
 .gg-mask {
-  background: #000;
-  border-radius: $border-radius;
+  border-radius: 50%;
   height: 64px;
   left: 0;
   position: fixed;

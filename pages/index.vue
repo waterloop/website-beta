@@ -1,37 +1,34 @@
 <template>
   <div>
-    <section
-      v-once
-      class="full-height relative overflow-hidden flex items-center">
-      <Parallax class="absolute w-100 h-100">
-        <img
-          class="absolute responsive-img dark-img h-100 op-cb"
-          src="~/assets/img/index/teamback.jpg"
-          alt="Team picture">
-      </Parallax>
+    <Cover
+      ref="cover"
+      :src="teamSrc"
+      img-class="h-100 dark-img op-cb"
+      class="items-center"
+      alt="Team picture">
       <div
         class="container center z-0">
         <div class="flex space2">
           <img
             src="~/assets/img/index/waterloo-shield.svg"
             alt="UWaterloo shield"
-            height="50">
+            height="40">
           <img
             :src="waterloopLogo"
             class="small-glyph"
             alt="Waterloop logo"
-            height="50">
+            height="40">
           <img
             class="small-glyph"
             src="~/assets/img/index/leaf.svg"
             alt="Canadian maple leaf"
-            height="50">
+            height="40">
         </div>
         <div class="white">
           <h1 class="mt3 mt5-ns mb3 f1 f-5-ns fw5">Canada's Hyperloop</h1>
           <p
             class="f4 f3-ns fw3 mw-50"
-          >Having withstood the test of time, team Waterloop is back with a whole new roster, preparing to take on the SpaceX Hyperloop challenge in Summer 2018.</p>
+          >Having withstood the test of time, Waterloop is back with a whole new roster, preparing to take on the SpaceX Hyperloop challenge.</p>
           <a
             class="mb3 mb5-ns dib ba br-pill ph3 pv2 f4"
             href="https://wloop.ca/join">Join the Team!</a>
@@ -43,103 +40,110 @@
               <img
                 src="~/assets/img/index/facebook.svg"
                 alt="team waterloop facebook"
-                height="50"></a>
+                height="40"></a>
             <a
               class="dim"
               href="https://twitter.com/team_waterloop"
               target="_blank"><img
                 src="~/assets/img/index/twitter.svg"
                 alt="team waterloop twitter"
-                height="50"></a>
+                height="40"></a>
             <a
               class="dim"
               href="https://www.instagram.com/team_waterloop"
               target="_blank"><img
                 src="~/assets/img/index/instagram.svg"
                 alt="team waterloop insta"
-                height="50"></a>
+                height="40"></a>
           </div>
-          <a
-            href="#main"><div class="arrow ml2"/></a>
+          <MainArrow class="ml2"/>
         </div>
       </div>
-    </section>
-    <section
-      class="relative noseldrag bg"
-      style="height:calc(180px + 20vw);">
+    </Cover>
+    <section class="full-height flex flex-column justify-around">
       <div
-        id="main"
-        class="target"/>
-      <div
-        class="flex flex-column justify-center items-center f3 absolute w-100 top-2"
-      >
+        class="relative noseldrag bg flex flex-column flex-grow-1 justify-around">
         <div
-          ref="crossfade"
-          class="crossfade">
-          <img
-            src="~/assets/img/index/planeLogo.svg"
-            alt="Plane Logo"
-            class="one"
-            height="30">
-          <img
-            :src="waterloopLogo"
-            alt="Waterloop Logo"
-            class="two"
-            height="30">
+          id="main"
+          class="target"/>
+        <div class="flex flex-column justify-center items-center f3 w-100 mv3 tc">
+          <div
+            ref="crossfade"
+            class="crossfade">
+            <img
+              src="~/assets/img/index/planeLogo.svg"
+              alt="Plane Logo"
+              class="one"
+              height="30">
+            <img
+              :src="waterloopLogo"
+              alt="Waterloop Logo"
+              class="two"
+              height="30">
+          </div>
+          <span class="fg-yellow mt2">Toronto - Montreal</span>
+          <div class="transition-width flex-align pn white">
+            <transition-group
+              transition-group
+              name="time"
+              class="time-box"
+              tag="div">
+              <template
+                v-for="(item, i) of timeText">
+                <img
+                  v-if="i == 0"
+                  :key="item"
+                  src="~/assets/img/index/stopwatch.svg"
+                  alt="Stopwatch"
+                  height="20">
+                <div
+                  v-else
+                  :key="item">{{ item }}</div>
+              </template>
+            </transition-group>
+          </div>
         </div>
-        <span
-          class="fg-yellow pa2">Toronto - Montreal</span>
-        <div class="transition-width flex-align pn white">
-          <transition-group
-            transition-group
-            name="time"
-            class="time-box"
-            tag="div">
-            <template
-              v-for="(item, i) of timeText">
-              <img
-                v-if="i == 0"
-                :key="item"
-                src="~/assets/img/index/stopwatch.svg"
-                alt="Stopwatch"
-                height="20">
-              <div
-                v-else
-                :key="item">{{ item }}</div>
-            </template>
-          </transition-group>
+        <div class="absolute left-0 bottom-0 z-1 h-100 w-100 mw25 mh90 toronto"/>
+        <div
+          ref="podTube"
+          class="relative w-100 pod-tube mb4">
+          <img
+            ref="pod"
+            class="absolute pod"
+            src="~/assets/img/index/pod.png"
+            alt="Pod">
+          <div/>
+          <div/>
+          <div/>
+        </div>
+        <div class="absolute right-0 bottom-0 z-1 h-100 w-100 mw25 mh90 montreal"/>
+      </div>
+      <div class="flex items-center">
+        <div
+          :class="{ active }"
+          class="hyper-grid white container mb4">
+          <div
+            v-for="(item, i) in whyHyperloop"
+            :key="i"
+            :style="{ animationDelay: `${ i * 500 }ms`}"
+            class="flex flex-column justify-center">
+            <img
+              :src="require('@/assets/img/index/' + item.src)"
+              :alt="item.alt"
+              class="">
+            <h3 class="mv2 f3">
+              {{ item.heading }}
+            </h3>
+            <div class="f5">
+              {{ item.text }}
+            </div>
+          </div>
         </div>
       </div>
-      <div class="absolute left-0 bottom-0 z-1 h-100 w-100 mw25 mh90 toronto"/>
-      <div
-        ref="podTube"
-        class="absolute w-100 pod-tube">
-        <img
-          ref="pod"
-          class="absolute pod"
-          src="~/assets/img/index/pod.png"
-          alt="Pod">
-        <div/>
-        <div/>
-        <div/>
-      </div>
-      <div class="absolute right-0 bottom-0 z-1 h-100 w-100 mw25 mh90 montreal"/>
     </section>
-    <!-- <div class="relative overflow-hidden h-fit-nav flex flex-column">
-      <div class="container white">
-        <div class="f2 mv4 b">Our Progress</div>
-        <p
-          class="text"
-          style="font-size:2vmax;">Since the first competition we have learnt more than we we could ever imagine!</p></div>
-      <Parallax class="absolute-bg"><img
-        class="responsive-img dark-img"
-        src="~/assets/img/index/teambg.jpg"
-        alt="Team picture"></Parallax>
-      <div class="w-100 h-100 flex-auto relative"><LineChart /></div>
-    </div> -->
     <section class="white">
       <div class="container cf">
-        <h2 class="f2 mv4">Our Blogs</h2>
+        <h2 class="f2 mb4">Our Blogs</h2>
         <p class="f3">Behind the scene stories from our journey so far
         </p>
         <div
@@ -153,7 +157,7 @@
             <div class="flex-auto">
               <div
                 :style="{ backgroundImage: `url('${post.img}')` }"
-                class="noseldrag aspect-ratio--6x4 cover"/>
+                class="noseldrag aspect-ratio--6x4 cover bg-center"/>
               <div class="f3 card-title mt3">{{ post.title }}</div>
             </div>
             <div class="flex-auto">
@@ -211,6 +215,34 @@ export default {
       partners: hypersonic,
       blog: [],
       timeText: [ '', 'in', '2 hours', '30', 'minutes' ],
+      teamSrc: 'https://drive.google.com/uc?export=view&id=13XxQGl0TrDCSnFRXNw-NWwzPVtkcKyCh', // require('@/assets/img/index/teamback.jpg'),
+      active: false,
+      whyHyperloop: [
+        {
+          src: 'icon-fast.svg',
+          alt: 'Fast',
+          heading: 'Faster than a plane',
+          text: 'Air and rolling resistances are taken out of the equation, allowing for speeds over 1200 km/h.',
+        },
+        {
+          src: 'icon-convenient.svg',
+          alt: 'Convenient',
+          heading: 'As convenient as a train',
+          text: 'No need to wait in line for hours, every minute a Hyperloop Pod departs to your destination.',
+        },
+        {
+          src: 'icon-safe.svg',
+          alt: 'Safe',
+          heading: 'High safety standards',
+          text: 'The safety and trustworthiness of the Hyperloop system receives our top priority.',
+        },
+        {
+          src: 'icon-sustainable.svg',
+          alt: 'Sustainable',
+          heading: 'Sustainable infrastructure',
+          text: 'Pods travel extremely efficiently and gain their power from renewable energy sources such as the sun.',
+        },
+      ],
     }
   },
   mounted() {
@@ -218,6 +250,7 @@ export default {
     const animate = () => {
       pod.classList.add('pod-animate')
       const handler = () => {
+        this.active = true
         this.timeText.splice(2, 1)
         crossfade.classList.add('switch')
         pod.removeEventListener('animationend', handler, eventOpts)
@@ -269,9 +302,8 @@ export default {
 
 .pod-tube {
   background-image: linear-gradient(#fff 0%, $bg 90%, #000 100%);
-  bottom: 3vw;
   display: flex;
-  height: calc(25px + 6vw);
+  height: calc(25px + 3vw);
   justify-content: space-around;
   justify-content: space-evenly;
 
@@ -280,30 +312,6 @@ export default {
     height: 100%;
     width: 0.5rem;
     z-index: 1;
-  }
-}
-
-.arrow {
-  animation: sdb 1.5s infinite;
-  border-bottom: 1px solid #fff;
-  border-left: 1px solid #fff;
-  height: 24px;
-  width: 24px;
-}
-
-@keyframes sdb {
-  0% {
-    opacity: 0;
-    transform: rotate(-45deg) translate(0, 0);
-  }
-
-  50% {
-    opacity: 1;
-  }
-
-  100% {
-    opacity: 0;
-    transform: rotate(-45deg) translate(-20px, 20px);
   }
 }
 
@@ -321,7 +329,7 @@ export default {
 }
 
 .pod-animate {
-  animation: slide 2s ease-out forwards;
+  animation: slide 1.5s 500ms cubic-bezier(0, 1, 0, 1) forwards;
 }
 
 @keyframes slide {
@@ -341,7 +349,6 @@ export default {
   display: flex;
   flex: 1 1 0;
   flex-direction: column;
-  min-width: 240px;
 }
 
 .blog {
@@ -352,12 +359,7 @@ export default {
 }
 
 .full-height {
-  height: 100vh;
-  margin-top: -#{$nav-height};
-}
-
-.dark-img {
-  filter: brightness(0.3);
+  min-height: calc(100vh - #{$nav-height});
 }
 
 .transition-width {
@@ -409,6 +411,45 @@ export default {
     >.two {
       transform: translate(-50%) perspective(120px) rotateX(0deg);
     }
+  }
+}
+
+.bg-l30 {
+  background-color: lighten($bg, 30%);
+}
+
+.hyper-grid {
+  display: grid;
+  grid-gap: 2rem;
+  text-align: center;
+
+  > div {
+    transform: scale(0);
+  }
+
+  &.active > div {
+    animation: appear 1s cubic-bezier(0.18, 0.89, 0.32, 1.28) forwards;
+  }
+
+  img {
+    height: 5vmax;
+    margin: 0 auto;
+  }
+}
+
+@keyframes appear {
+  0% {
+    transform: scale(0);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@media only screen and (min-width: $small) {
+  .hyper-grid {
+    grid-template-columns: 1fr 1fr;
   }
 }
 </style>

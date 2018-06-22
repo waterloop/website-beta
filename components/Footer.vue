@@ -1,12 +1,6 @@
 <template>
   <footer class="page-footer grey lighten-5 white pv4">
-    <div class="container flex justify-between items-center">
-      <img
-        class="logo noseldrag"
-        src="~assets/img/Footer/icon-yellow.svg"
-        alt="Waterloop logo"
-        width="50">
-    </div>
+    <div class="container flex justify-between items-center"/>
   </footer>
 </template>
 
@@ -14,6 +8,6 @@
 @import '~/assets/css/variables.scss';
 
 footer {
-  background: darken($bg, 10%);
+  background: $dark-bg;
 }
 </style>
