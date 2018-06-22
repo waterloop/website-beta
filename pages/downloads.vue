@@ -7,10 +7,12 @@
         :key="i"
         class="card">
         <div class="overflow-hidden">
-          <img
-            :src="item.thumbnail"
-            class="noseldrag"
-            alt="Wallpaper thumbnail">
+          <div class="relative aspect-ratio--16x9">
+            <img
+              :src="item.thumbnail"
+              class="noseldrag absolute-bg"
+              alt="Wallpaper thumbnail">
+          </div>
         </div>
         <div class="card-action">
           <a
