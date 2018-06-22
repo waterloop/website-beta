@@ -1,4 +1,4 @@
-/* eslint-disable */
+/* eslint-disable import/no-commonjs, import/no-nodejs-modules */
 const PurgecssPlugin = require('purgecss-webpack-plugin')
 const purgeHtml = require('purgecss-from-html')
 const glob = require('glob-all')
@@ -46,33 +46,52 @@ module.exports = {
   ],
   modules: [
     '@nuxtjs/sitemap',
-    ['@nuxtjs/component-cache', {
+    [ '@nuxtjs/component-cache', {
       max: 10000,
-      maxAge: 1000 * 60 * 60
-    }],
+      maxAge: 1000 * 60 * 60,
+    } ],
   ],
   /*
   ** Customize the progress bar color
   */
   loading: { color: '#fed138' },
   build: {
-    extend (config, { isDev, isClient }) {
-      if (!isDev && isClient) {
+    extend(config, { isDev }) {
+      const urlLoader = config.module.rules.find(rule => rule.test.test('.svg'))
+      urlLoader.test = /\.(png|jpe?g|gif)$/
+
+      config.module.rules.push({
+        test: /\.svg$/,
+        oneOf: [
+          {
+            loader: 'vue-svg-loader',
+            resourceQuery: /inline/,
+          },
+          {
+            loader: 'svg-url-loader',
+            options: {
+              noquotes: true,
+              stripdeclarations: true,
+            },
+          },
+        ],
+      })
+      if (!isDev) {
         // Remove unused CSS using purgecss. See https://github.com/FullHuman/purgecss
         // for more information about purgecss.
-        debugger
+
         config.plugins.push(
           new PurgecssPlugin({
             paths: glob.sync([
               path.join(__dirname, 'pages/**/*.vue'),
               path.join(__dirname, 'layouts/**/*.vue'),
-              path.join(__dirname, 'components/**/*.vue')
+              path.join(__dirname, 'components/**/*.vue'),
             ]),
-            whitelist: ['html', 'body'],
+            whitelist: [ 'html', 'body' ],
             extractors: [
               {
                 extractor: purgeHtml,
-                extensions: ["html"],
+                extensions: [ 'html' ],
               },
             ],
           })
@@ -80,10 +99,10 @@ module.exports = {
       }
     },
     babel: {
-      presets: [['vue-app', {
+      presets: [ [ 'vue-app', {
         useBuiltIns: true,
         loose: true,
-      }]],
+      } ] ],
     },
   },
   serverMiddleware: [

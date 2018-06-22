@@ -1,16 +1,16 @@
 <template>
   <nav
     :class="{ glass }"
-    class="z-999 sticky top-0">
+    class="z-999 sticky top-0 noseldrag">
     <div class="container h-100 flex justify-between items-center">
       <div class="nav-left">
         <nuxt-link
           to="/"
-          class="noseldrag flex justify-between items-center">
-          <img
-            class="noseldrag w-100 h-75"
-            src="~assets/img/Header/logo.svg"
-            alt="Waterloop logo">
+          class="flex justify-between items-center">
+          <WaterloopFullLogo
+            id="logo"
+            name="Waterloop Logo"
+            class="fg-yellow w-100 h-75"/>
         </nuxt-link>
       </div>
       <div class="ham">
@@ -46,12 +46,14 @@
 
 <script>
 import { noscroll, scroll } from '~/assets/js/util'
+import WaterloopFullLogo from '~/assets/img/Header/logo.svg?inline' // eslint-disable-line import/no-unresolved, import/extensions
 
 const eventOpts = {
   capture: false,
   passive: true,
 }
 export default {
+  components: { WaterloopFullLogo },
   data: () => ({
     open: false,
     glass: true,
