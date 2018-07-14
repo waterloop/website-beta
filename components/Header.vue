@@ -132,14 +132,14 @@ $nav-bc: $bg;
 $nav-fc: #fff;
 
 nav {
-  background-color: $nav-bc;
+  background: $nav-bc;
   font-family: $heading-font;
   font-size: 1.25rem;
   height: $nav-height;
   transition: background-color 200ms ease, box-shadow 200ms ease;
 
   &.glass {
-    background-color: transparentize($nav-bc, 1);
+    background: linear-gradient($nav-bc, transparent);//transparentize($nav-bc, 1);
   }
 }
 
