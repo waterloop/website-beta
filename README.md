@@ -31,3 +31,5 @@ https://nuxtjs.org/ (if you do no understand anything then it's okay)
 Under normal usage, you need not touch that file.
 ### What do I use to edit the code?
 Your favourite code editor, as long as it is not Word, Notepad, etc. If you don't have one, I recommend https://code.visualstudio.com/.
+### Why do I have no syntax highlighting?
+You have to install plugins for your editor for syntax highlighting for `.vue` files. This is the one for vscode: https://marketplace.visualstudio.com/items?itemName=octref.vetur
