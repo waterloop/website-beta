@@ -1,4 +1,4 @@
-const Instagram = require('node-instagram').default
+/* const Instagram = require('node-instagram').default
 const twitter = require('twitter')
 
 const {
@@ -47,4 +47,30 @@ module.exports = {
 
     })
   },
+} */
+
+const Twitter = require('twitter');
+
+module.exports = {
+  getTweets(callback) {
+    const client = new Twitter({
+      consumer_key: 'yZl2RIujnkqE9A7kOdabwAeTE',
+      consumer_secret: 'sUwaGmJ20SQrwftiyK9NilAIybkL6kSORg0iMhsSDsb6yXJLoy',
+      access_token_key: '2339211466-GIMLWimjJL1Pf7hgHVjdkcV7CgDeA3MpDJ7KbI5',
+      access_token_secret: 'dqaxxDOEYeas3qzFy5VmccRCjJEPENxsQWTaruoE0n6VvA',
+    });
+
+    const params = { screen_name: 'team_waterloop'};
+
+    client.get('statuses/user_timeline', params, (error, tweets, response) => {
+      if (error) throw error;
+      console.log(tweets);
+      console.log(response);
+    })
+  },
 }
+
+
+
+
+
