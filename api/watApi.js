@@ -49,23 +49,30 @@ module.exports = {
   },
 } */
 
-const Twitter = require('twitter');
+const Twitter = require('twitter')
 
 module.exports = {
   getTweets(callback) {
     const client = new Twitter({
-      consumer_key: 'yZl2RIujnkqE9A7kOdabwAeTE',
-      consumer_secret: 'sUwaGmJ20SQrwftiyK9NilAIybkL6kSORg0iMhsSDsb6yXJLoy',
-      access_token_key: '2339211466-GIMLWimjJL1Pf7hgHVjdkcV7CgDeA3MpDJ7KbI5',
-      access_token_secret: 'dqaxxDOEYeas3qzFy5VmccRCjJEPENxsQWTaruoE0n6VvA',
-    });
+      consumer_key: '5fGmRThAq1sn7PgKo0ycKMhkt',
+      consumer_secret: 'Dk76R7jrvjP7YrMSDlvFdx4ZoVnLzcXleQmHIO9G3rWYHYUKsY',
+      access_token_key: '2339211466-9zVgGApyQoDew7r6IsOkdfJVbv5Gv8euECqQ0Bl',
+      access_token_secret: 'i0eoI0cPOVLoenFGU0yTrpIp50HFCxSkMWnSE9wLqAvur',
+    })
 
-    const params = { screen_name: 'team_waterloop'};
+    const params = {
+      screen_name: 'team_waterloop',
+      include_rts: false,
+      tweet_mode: 'extended',
+      include_entities: true,
+    }
 
     client.get('statuses/user_timeline', params, (error, tweets, response) => {
-      if (error) throw error;
-      console.log(tweets);
-      console.log(response);
+      if (!error) {
+        callback(tweets)
+      } else {
+        callback(response)
+      }
     })
   },
 }
