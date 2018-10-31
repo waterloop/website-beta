@@ -15,7 +15,7 @@
     <slot v-for="(section, i) of sections">
       <div
         v-if="section.parallax"
-        :key="i"
+        :key="2 * i"
         class="parallax-container">
         <div class="parallax">
           <img
@@ -25,7 +25,7 @@
         </div>
       </div>
       <div
-        :key="i"
+        :key="2 * i + 1"
         class="section white">
         <div class="row container">
           <h2 class="header">{{ section.title }}</h2>
@@ -35,8 +35,8 @@
             class="content">{{ content }}</p>
           <template v-if="'img' in section">
             <img
-              v-for="(imgs, j) of section.img"
-              :key="j"
+              v-for="(imgs, k) of section.img"
+              :key="k"
               :src="img"
               class="responsive-img"
               alt="Goose features">
@@ -51,6 +51,7 @@
 export default {
   data() {
     return {
+      banner: '/images/flock/goose2/banner.png',
       sections: [
         {
           title: 'Specifications',
