@@ -36,6 +36,7 @@
               v-else
               :href="link.href"
               class="fw4"
+              rel="noopener noreferrer nofollow"
               target="_blank">{{ link.name }}</a>
           </li>
         </ul>
