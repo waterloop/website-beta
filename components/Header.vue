@@ -63,8 +63,8 @@ export default {
         href: '/',
       },
       {
-        name: 'Flock',
-        href: '/flock',
+        name: 'Goose II',
+        href: '/goose-ii',
       },
       {
         name: 'Team',
