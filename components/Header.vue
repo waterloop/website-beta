@@ -64,7 +64,7 @@ export default {
         href: '/',
       },
       {
-        name: 'Goose II',
+        name: 'Goose II',
         href: '/goose-ii',
       },
       {
