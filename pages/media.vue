@@ -1,10 +1,6 @@
 <script>
 import axios from '~/plugins/axios';
 
-axios.get('/api/twitterPosts').then((response) => {
-  //console.log(response.data);
-});
-
 export default {
   data: function() {
     return {
@@ -13,7 +9,6 @@ export default {
   },
   mounted: function() {
     axios.get('/api/twitterPosts').then((response) => {
-      console.log(response.data);
       this.tweets = response.data.data;
       console.log(this.tweets);
     });
@@ -22,6 +17,8 @@ export default {
 
 </script>
 
+<!-- if you need any more of the twitter content, uncomment the console log above and look through the data availabale -->
+<!-- started making some sort of grid layout, but scrap it if you want -->
 <template>
   <div class="tweet-grid">
     <div class="social-card" v-for="tweet in tweets" :key="tweet.id">
@@ -33,8 +30,6 @@ export default {
     </div>
   </div>
 </template>
-
-
 
 <style lang="scss">
 .tweet-grid {
