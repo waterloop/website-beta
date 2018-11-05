@@ -18,7 +18,7 @@
     "lint": "npm run lint:js && npm run lint:css",
     "lint:js": "eslint --ext .js,.vue .",
     "lint:js:fix": "npm run lint:js -- --fix",
-    "lint:css": "stylelint **/*.vue **/*.scss **/*.css",
+    "lint:css": "stylelint --syntax=scss **/*.vue **/*.scss **/*.css",
     "lint:css:fix": "npm run lint:css -- --fix"
   },
   "dependencies": {
@@ -55,6 +55,7 @@
     "sass-loader": "^7.0.3",
     "stylelint": "^9.2.1",
     "stylelint-config-sass-guidelines": "^5.0.0",
+    "stylelint-processor-html": "^1.0.0",
     "stylelint-scss": "^3.1.0",
     "svg-url-loader": "^2.3.2",
     "vue-svg-loader": "^0.5.0"
