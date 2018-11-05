@@ -29,22 +29,16 @@
     "d3": "^5.4.0",
     "dotenv": "^6.0.0",
     "express": "^4.15.3",
-    "fbgraph": "^1.4.4",
-    "fs": "0.0.1-security",
     "medium-get-latest-posts": "^1.1.2",
-    "net": "^1.0.2",
     "node-instagram": "^4.1.0",
     "nodemailer": "^4.6.5",
     "nuxt-edge": "^2.0.0-25476008.ba5c979",
-    "postcss-syntax": "^0.10.0",
     "rellax": "^1.6.2",
     "slack-node": "^0.1.8",
     "source-map-support": "^0.5.6",
     "tachyons": "^4.10.0",
-    "tls": "0.0.1",
     "twitter": "^1.7.1",
-    "typeface-lato": "0.0.54",
-    "webpack-cli": "^3.1.2"
+    "typeface-lato": "0.0.54"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.3",

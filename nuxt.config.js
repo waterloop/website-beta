@@ -60,9 +60,6 @@ module.exports = {
       const urlLoader = config.module.rules.find(rule => rule.test.test('.svg'))
       urlLoader.test = /\.(png|jpe?g|gif)$/
 
-      config.node = {
-        fs: 'empty',
-      };
       config.module.rules.push({
         test: /\.svg$/,
         oneOf: [
