@@ -36,6 +36,7 @@
               v-else
               :href="link.href"
               class="fw4"
+              rel="noopener noreferrer nofollow"
               target="_blank">{{ link.name }}</a>
           </li>
         </ul>
@@ -63,8 +64,8 @@ export default {
         href: '/',
       },
       {
-        name: 'Flock',
-        href: '/flock',
+        name: 'Goose II',
+        href: '/goose-ii',
       },
       {
         name: 'Team',
@@ -262,7 +263,7 @@ nav a {
     ~ span {
       background-color: currentColor;
       display: block;
-      padding-top: 12%;
+      padding-top: 0.25rem;
       pointer-events: none;
       position: relative;
       transition: transform 0.3s ease-in-out;
@@ -270,7 +271,7 @@ nav a {
       z-index: 1;
 
       &:not(:first-of-type) {
-        margin-top: 19%;
+        margin-top: 0.375rem;
       }
     }
   }
@@ -285,15 +286,15 @@ nav a {
     }
 
     ~ span:nth-of-type(2) {
-      opacity: 0;
+      transform: scale(0);
     }
 
     ~ span:nth-of-type(1) {
-      transform: translateY(260%) rotate(45deg);
+      transform: translateY(0.625rem) rotate(45deg);
     }
 
     ~ span:nth-of-type(3) {
-      transform: translateY(-260%) rotate(-45deg);
+      transform: translateY(-0.625rem) rotate(-45deg);
     }
   }
 }
