@@ -32,6 +32,12 @@ app.get('/mediumPosts', (req, res) => {
   mediumPosts({ httpMethod: 'GET' }, null, callback(res))
 })
 
+app.get('/twitterPosts', (req, res) => {
+  watApi.getTweets((response) => {
+    res.send({data: response});
+  })
+})
+
 // Export the server middleware
 module.exports = {
   path: '/api',

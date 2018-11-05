@@ -1,10 +1,6 @@
-const Instagram = require('node-instagram').default
-const twitter = require('twitter')
+const Twitter = require('twitter')
 
 const {
-  INSTA_ACCOUNT_CLIENT_ID,
-  INSTA_ACCOUNT_CLIENT_SECRET,
-  INSTA_ACCOUNT_ACCESS_TOKEN,
   TWITTER_ACCOUNT_CONSUMER_KEY,
   TWITTER_ACCOUNT_CONSUMER_SECRET,
   TWITTER_ACCOUNT_ACCESS_TOKEN_KEY,
@@ -12,39 +8,27 @@ const {
 } = process.env
 
 module.exports = {
-  getInstaPosts(callback) {
-    const instagram = new Instagram({
-      clientId: INSTA_ACCOUNT_CLIENT_ID,
-      clientSecret: INSTA_ACCOUNT_CLIENT_SECRET,
-      accessToken: INSTA_ACCOUNT_ACCESS_TOKEN,
-    })
-
-    instagram.get('users/self/media/recent', (err, data) => {
-      if (err) {
-        callback(err)
-      } else {
-        callback(data)
-      }
-    })
-  },
-
-  getTweeterPosts(callback) {
-    const twitterClient = new twitter({
+  getTweets(callback) {
+    const client = new Twitter({
       consumer_key: TWITTER_ACCOUNT_CONSUMER_KEY,
       consumer_secret: TWITTER_ACCOUNT_CONSUMER_SECRET,
       access_token_key: TWITTER_ACCOUNT_ACCESS_TOKEN_KEY,
       access_token_secret: TWITTER_ACCOUNT_ACCESS_TOKEN_SECRET,
     })
 
-    const params = { screen_name: 'team_waterloop' }
+    const params = {
+      screen_name: 'team_waterloop',
+      include_rts: false,
+      tweet_mode: 'extended',
+      include_entities: true,
+    }
 
-    twitterClient.get('statuses/user_timeline', params, (error, tweets, response) => {
+    client.get('statuses/user_timeline', params, (error, tweets, response) => {
       if (!error) {
         callback(tweets)
       } else {
         callback(response)
       }
-
     })
   },
 }
