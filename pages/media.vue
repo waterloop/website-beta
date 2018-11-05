@@ -33,22 +33,17 @@ export default {
 
 <style lang="scss">
 .tweet-grid {
-  -webkit-column-count: 2;
-  -webkit-column-gap:   5px;
-  -moz-column-count:    2;
-  -moz-column-gap:      5px;
-  column-count:         2;
-  column-gap:           5px;
-  .social-card {
-    margin: 20px;
-    //width: 100% !important;
-    //height: auto !important;
-    .description {
-      padding: 10px;
-    }
-    background-color: #fafafa;
-  }
+  column-count: 2;
+  column-gap: 5px;
 
 }
 
+.social-card {
+  background-color: #fafafa;
+  margin: 20px;
+
+  .description {
+    padding: 10px;
+  }
+}
 </style>
