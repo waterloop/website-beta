@@ -33,8 +33,8 @@ app.get('/mediumPosts', (req, res) => {
 })
 
 app.get('/twitterPosts', (req, res) => {
-  watApi.getTweets((response) => {
-    res.send({data: response});
+  watApi.getTweets(response => {
+    res.send({ data: response })
   })
 })
 

@@ -1,18 +1,15 @@
 <script>
-import axios from '~/plugins/axios';
+import axios from '~/plugins/axios'
 
 export default {
-  data: function() {
-    return {
-      tweets: null
-    }
+  data() {
+    return { tweets: null }
   },
-  mounted: function() {
-    axios.get('/api/twitterPosts').then((response) => {
-      this.tweets = response.data.data;
-      console.log(this.tweets);
-    });
-  }
+  mounted() {
+    axios.get('/api/twitterPosts').then(response => {
+      this.tweets = response.data.data
+    })
+  },
 }
 
 </script>
@@ -21,11 +18,16 @@ export default {
 <!-- started making some sort of grid layout, but scrap it if you want -->
 <template>
   <div class="tweet-grid">
-    <div class="social-card" v-for="tweet in tweets" :key="tweet.id">
-      <img v-if="tweet.entities.hasOwnProperty('media')" v-bind:src="tweet.entities.media[0].media_url"/>
+    <div
+      v-for="tweet in tweets"
+      :key="tweet.id"
+      class="social-card">
+      <img
+        v-if="tweet.entities.hasOwnProperty('media')"
+        :src="tweet.entities.media[0].media_url">
       <div class="description">
         <h3>Waterloop</h3>
-        <p>{{tweet.full_text}}</p>
+        <p>{{ tweet.full_text }}</p>
       </div>
     </div>
   </div>
