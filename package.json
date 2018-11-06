@@ -32,7 +32,7 @@
     "medium-get-latest-posts": "^1.1.2",
     "node-instagram": "^4.1.0",
     "nodemailer": "^4.6.5",
-    "nuxt-edge": "^2.0.0-25476008.ba5c979",
+    "nuxt": "^2.2.0",
     "rellax": "^1.6.2",
     "slack-node": "^0.1.8",
     "source-map-support": "^0.5.6",
