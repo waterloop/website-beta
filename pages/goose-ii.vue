@@ -7,8 +7,10 @@
         alt="Goose banner"></div>
     </div>
     <div class="section white">
-      <div class="row container">
-        <h2 class="header">Goose II</h2>
+      <div class="container row">
+        <h2
+          class="header"
+          style="font-size:6vmin;">Goose II</h2>
         <p class="grey-text text-darken-3 lighten-3">The next generation.</p>
       </div>
     </div>
@@ -27,8 +29,10 @@
       <div
         :key="2 * i + 1"
         class="section white">
-        <div class="row container">
-          <h2 class="header">{{ section.title }}</h2>
+        <div class="container row">
+          <h2
+            class="header"
+            style="font-size:6vmin;">{{ section.title }}</h2>
           <p
             v-for="(content, j) in section.content"
             :key="j"
@@ -51,7 +55,7 @@
 export default {
   data() {
     return {
-      banner: '/images/flock/goose2/banner.png',
+      banner: require('@/assets/img/goose-ii/banner.png'),
       sections: [
         {
           title: 'Specifications',
@@ -65,28 +69,28 @@ export default {
           content: [
             'A lightweight pneumatic levitation system that allows the pod to float over a thin cushion of compressed air – creating almost zero drag. Air is supplied by two high pressure carbon fiber tanks and sent to four air casters positioned underneath our levitation and suspension module. This module also deals with unevenness of the track and dampens vibrations produced while travelling at high speeds using shock absorbers.',
           ],
-          parallax: '/images/flock/goose2/levitation.jpg',
+          parallax: require('@/assets/img/goose-ii/levitation.jpg'),
         },
         {
           title: 'Eddy Current Brakes',
           content: [
             'Eddy current brakes, as its name suggests, is our contact-less braking system that utilizes the eddy current phenomena to smoothly slow down of the pod from high speeds. An array of powerful magnets are used to provide the braking effect.',
           ],
-          parallax: '/images/flock/goose2/goose2_ec.png',
+          parallax: require('@/assets/img/goose-ii/goose2_ec.png'),
         },
         {
           title: 'Magnetic Wheels',
           content: [
             'Inside each magnetic wheel is a ring of magnets arranged in a particular combination such that by spinning, each pair of magnetic wheels generate forces to keep the pod centered on the test track as well as propell the pod forward. High speed brushless DC motors allow us to have effective control over the pod even at high speeds.',
           ],
-          parallax: '/images/flock/goose2/goose2_magwheel.png',
+          parallax: require('@/assets/img/goose-ii/goose2_magwheel.png'),
         },
         {
           title: 'Shell',
           content: [
             'Incorporating beautiful and modern design while being operable at up to trans-sonic velocities. Its fiberglass composition means it can be lightweight yet strong.',
           ],
-          parallax: '/images/flock/goose2/goose2_shell.png',
+          parallax: require('@/assets/img/goose-ii/goose2_shell.png'),
         },
       ],
     }
