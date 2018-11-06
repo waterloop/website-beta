@@ -4,6 +4,7 @@ Waterloop Official Website
 ## Requirements
 - node.js (http://nodejs.org, pick current rather than LTS if installing fresh)
 - git (https://git-scm.com/)
+- git-lfs (https://git-lfs.github.com/)
 
 ## Development Instructions
 - Clone the repo
