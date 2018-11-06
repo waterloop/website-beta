@@ -37,7 +37,6 @@ export default {
 .tweet-grid {
   column-count: 2;
   column-gap: 5px;
-
 }
 
 .social-card {
