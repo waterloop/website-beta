@@ -1,0 +1,14 @@
+language: node_js
+node_js:
+  - "11"
+sudo: enabled
+dist: xenial
+cache: npm
+git:
+  depth: 1
+jobs:
+  include:
+  - name: "Lint JS"
+    script: npm run lint:js
+  - name: "Lint CSS"
+    script: npm run lint:css
