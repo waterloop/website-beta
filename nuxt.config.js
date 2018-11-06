@@ -3,6 +3,7 @@ const PurgecssPlugin = require('purgecss-webpack-plugin')
 const purgeHtml = require('purgecss-from-html')
 const glob = require('glob-all')
 const path = require('path')
+const pkg = require('./package')
 
 module.exports = {
   /*
@@ -19,7 +20,7 @@ module.exports = {
       {
         hid: 'description',
         name: 'description',
-        content: 'Official website of Waterloop',
+        content: pkg.description,
       },
       {
         name: 'theme-color',
@@ -99,8 +100,9 @@ module.exports = {
       }
     },
     babel: {
-      presets: [ [ 'vue-app', {
-        useBuiltIns: true,
+      presets: [ [ '@vue/babel-preset-app', {
+        targets: { browsers: pkg.browserslist },
+        useBuiltIns: 'usage',
         loose: true,
       } ] ],
     },
