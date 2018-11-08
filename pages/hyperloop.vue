@@ -54,7 +54,7 @@
           style="font-size: 7vmin;">Bringing Hyperloop Technology to Canada</h2>
         <p
           class="subtitle-text"
-          style="color:#808080;">Team Waterloop is proud to be the only Canadian team in the SpaceX Hyperloop Competition, and is looking to make Canada a world leader in hyperloop technology. From being the first team to successfully implement pneumatic levitation to one-day transporting you from Toronto to Montreal in 20 minutes or less. We can’t wait to see what’s next for this team.
+          style="color:#808080;">Team Waterloop is proud to be the only Canadian team in the SpaceX Hyperloop Competition and is looking to make Canada a world leader in hyperloop technology. From being the first team to successfully implement pneumatic levitation to one day transporting you from Toronto to Montreal in 20 minutes or less, we can’t wait to see what’s next for this team!
         </p>
       </div>
       <h2
