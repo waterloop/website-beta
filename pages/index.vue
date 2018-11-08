@@ -289,11 +289,11 @@ export default {
 @import '~/assets/css/variables.scss';
 
 .toronto {
-  background: url('~/assets/img/index/Waterloop_Toronto_Skyline.svg') left bottom no-repeat;
+  background: url('~assets/img/index/Waterloop_Toronto_Skyline.svg') left bottom no-repeat;
 }
 
 .montreal {
-  background: url('~/assets/img/index/Waterloop_Montreal_Skyline.svg') right bottom no-repeat;
+  background: url('~assets/img/index/Waterloop_Montreal_Skyline.svg') right bottom no-repeat;
 }
 
 .space2 > :not(:last-child) {
