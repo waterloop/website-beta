@@ -109,9 +109,9 @@ export default {
 }
 
 .social-card {
+  align-items: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
   margin: 20px;
 
   .description {
