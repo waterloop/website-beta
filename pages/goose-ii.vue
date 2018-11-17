@@ -9,7 +9,7 @@
     <div class="section white">
       <div class="row container">
         <h2 class="header">Goose II</h2>
-        <p class="grey-text text-darken-3 lighten-3">The next generation.</p>
+        <p class="grey-text text-darken-3 lighten-3">TThe next generation: for Competition II the Waterloop team aimed to optimize our pod design for speed based on what we learned from Competition I. This meant reducing pod mass and improving breaking and control systems.</p>
       </div>
     </div>
     <slot v-for="(section, i) of sections">
