@@ -25,19 +25,47 @@
         </p>
         <h2
           class="subtitle"
+          style="font-size: 7vmin;">Why Hyperloop?</h2>
+        <p
+          class="subtitle-text"
+          style="color:#808080;">
+          Faster than a plane: Our mission is to cut travel time by aiming for speeds of 1,300 km/h. <br>
+          As convenient as a train: With pressure-controlled cabins, passengers can enjoy a quick, comfortable commute. <br>
+          High Safety Standards: With little interference with outside environemt, a hyperloop route is a safe, traffic-free alternative to travel. <br>
+          Sustainable Infrastructure: Hyperloop technology requires less area than conventional transportation systems. <br>
+        </p>
+        <h2
+          class="subtitle"
           style="font-size: 7vmin;">SpaceX Hyperloop Competition</h2>
         <p
           class="subtitle-text"
-          style="color:#808080;">In order to accelerate the development of functional prototypes and encourage student innovation, SpaceX announced the Hyperloop Pod Competition in 2015, which challenges university teams to design and build the best transport Pod. The first two competitions were held in January and August 2017 and were the first of their kind anywhere in the world.
+          style="color:#808080;">To accelerate the development of functional prototypes and encourage student innovation, SpaceX announced the Hyperloop Pod Competition in 2015. University teams are challenged to design and build the best transport pod.
         </p>
         <p
           class="subtitle-text"
-          style="color:#808080;">Based on these successes, SpaceX has moved forward with the third installment: 2018 Hyperloop Pod Competition. The competition will focus on a single criterion--maximum speed. Additionally, all Pods must be self-propelled.
+          style="color:#808080;">The first three competitions were held in January 2017, August 2017 and July 2018, and were the first of their kind anywhere in the world. 
+        </p>
+        <p
+        class="subtitle-text"
+        style="color:#808080;">Based on these successes, SpaceX has moved forward with the third installment: the 2019 Hyperloop Pod Competition. The competition will focus on a single criterion--maximum speed with successful deceleration. 
+      </p>
+      <h2
+          class="subtitle"
+          style="font-size: 7vmin;">Bringing Hyperloop Technology to Canada</h2>
+        <p
+          class="subtitle-text"
+          style="color:#808080;">Team Waterloop is proud to be the only Canadian team in the SpaceX Hyperloop Competition and is looking to make Canada a world leader in hyperloop technology. From being the first team to successfully implement pneumatic levitation to one day transporting you from Toronto to Montreal in 20 minutes or less, we can’t wait to see what’s next for this team!
         </p>
       </div>
-      <a
+      <h2
+          class="subtitle"
+          style="font-size: 7vmin;">Find Out More</h2>
+        <a
+          target="_blank"
+          href="https://teamwaterloop.ca/flock"><p class="subtitle-text">Check out Waterloop's Flock</p></a>
+        <a
         target="_blank"
-        href="http://www.spacex.com/hyperloopalpha"><p class="center subtitle-text">More information about the hyperloop can be found here</p></a>
+        href="http://www.spacex.com/hyperloopalpha"><p class="subtitle-text">Learn more about the Hyperloop Concept</p></a>
     </div>
   </div>
 </template>
