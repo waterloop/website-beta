@@ -36,7 +36,7 @@
               v-else
               :href="link.href"
               class="fw4"
-              rel="noopener noreferrer nofollow"
+              rel="noopener noreferrer"
               target="_blank">{{ link.name }}</a>
           </li>
         </ul>
@@ -62,6 +62,10 @@ export default {
       {
         name: 'Home',
         href: '/',
+      },
+      {
+        name: 'Hyperloop',
+        href: '/hyperloop',
       },
       {
         name: 'Goose II',
